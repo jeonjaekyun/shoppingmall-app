@@ -14,15 +14,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.get('/',(req, res)=>{
-    res.send('Hello World!!');
+app.get('/api/hello',(req, res)=>{
+    res.send('안녕하세요!');
 });
 
 app.post('/api/users/register', (req,res)=>{
     const user = new User(req.body);
     user.save((err,userInfo)=>{
         if(err) res.status(400).json({err});
-        res.status(200).json({loginSuccess:true, userInfo:userInfo});
+        res.status(200).json({success:true});
     });
 });
 
@@ -68,7 +68,7 @@ app.get('/api/users/auth', auth ,function(req,res){
 });
 
 app.get('/api/users/logout', auth, function(req,res){
-    User.findOneAndModify({_id:req.user._id}, {token:""}, (err, user) => {
+    User.findOneAndUpdate({_id:req.user._id}, {token:""}, (err, user) => {
         if(err) return res.json({success:false});
         res.status(200).json({success:true});
     });
