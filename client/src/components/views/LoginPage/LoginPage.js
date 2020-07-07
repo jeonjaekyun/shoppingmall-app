@@ -34,7 +34,7 @@ function LoginPage(props) {
             if(response.payload.loginSuccess){
                 props.history.push('/');
             }else{
-                alert('Error');
+                alert(response.payload.message);
             }
         })
     }
@@ -42,7 +42,7 @@ function LoginPage(props) {
     
     return (
         <div style={{
-            width:"100%", height:'100vh', display:'flex', justifyContent:'center', 
+            width:"100%", height:'70vh', display:'flex', justifyContent:'center', 
             alignItems:'center',flexDirection:'column'}}
         >
             <h2>Login</h2>

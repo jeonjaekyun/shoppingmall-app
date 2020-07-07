@@ -36,7 +36,7 @@ app.post('/api/users/login', (req, res) => {
 
         //비밀번호 비교
         user.comparePassword(password, function(err, isMatch){
-            if(err) return res.json({loginSuccess:false, message:'비밀번호를 확인하세요!'});
+            if(!isMatch) return res.json({loginSuccess:false, message:'비밀번호를 확인하세요!'});
             
             //토큰생성
             if(isMatch){
