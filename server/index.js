@@ -8,6 +8,25 @@ const localStorage = new LocalStorage('./scratch');
 const db = require('./config/db');
 const {User} = require('./models/User');
 const {auth} = require('./middlewares/auth');
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination:(req,file,cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req,file,cb) => {
+        cb(null,`${Date.now()}_${file.originalname}`);
+    },
+    fileFilter: (req,file,cb) => {
+        const ext = path.extname(file.originalname);
+        if(ext !== '.jpg' || ext !== '.png'){
+            return cb(res.status(400).end('jpg, png만 가능합니다.'), false);
+        }
+        cb(null,true);
+    }
+});
+
+var upload = multer({storage: storage}).single('file');
 
 db();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -72,6 +91,13 @@ app.get('/api/users/logout', auth, function(req,res){
         if(err) return res.json({success:false});
         res.status(200).json({success:true});
     });
+});
+
+app.post('/api/product/uploadImage', function(req,res){
+    upload(req, res, err => {
+        if(err) return res.json({success:false, err});
+        return res.json({success:true, image:res.req.file.path, fileName:res.req.file.filename});
+    })
 });
 
 app.listen(port, ()=>{
