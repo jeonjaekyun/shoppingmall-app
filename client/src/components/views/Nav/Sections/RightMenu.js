@@ -3,10 +3,8 @@ import React from 'react';
 import { Menu } from 'antd';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import { useSelector } from "react-redux";
 
 function RightMenu(props) {
-    const user = useSelector(state => state.user)
 
     const logoutHandler = () => {
         axios.get('/api/users/logout')
@@ -33,6 +31,9 @@ function RightMenu(props) {
     } else {
         return (
             <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
+                <Menu.Item>
+                    <a href="/product/upload">Upload</a>
+                </Menu.Item>
                 <Menu.Item>
                     <span onClick={logoutHandler}>Logout</span>
                 </Menu.Item>

@@ -7,6 +7,7 @@ const {LocalStorage} = require('node-localstorage');
 const localStorage = new LocalStorage('./scratch');
 const db = require('./config/db');
 const {User} = require('./models/User');
+const {Product} = require('./models/Product');
 const {auth} = require('./middlewares/auth');
 const multer = require('multer');
 
@@ -32,6 +33,7 @@ db();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use('/uploads', express.static('uploads'));
 
 app.get('/api/hello',(req, res)=>{
     res.send('안녕하세요!');
@@ -93,10 +95,19 @@ app.get('/api/users/logout', auth, function(req,res){
     });
 });
 
-app.post('/api/product/uploadImage', function(req,res){
+app.post('/api/product/uploadImage', auth, function(req,res){
     upload(req, res, err => {
         if(err) return res.json({success:false, err});
         return res.json({success:true, image:res.req.file.path, fileName:res.req.file.filename});
+    })
+});
+
+app.post('/api/product/uploadProduct', auth, function(req,res){
+
+    const product = new Product(req.body);
+    product.save((err)=>{
+        if(err) return res.status(400).json({success:false, err});
+        return res.status(200).json({success:true})
     })
 });
 
