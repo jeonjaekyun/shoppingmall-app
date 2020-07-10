@@ -5,6 +5,7 @@ import LoginPage from './components/views/LoginPage/LoginPage';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import UploadProductPage from './components/views/UploadProductPage/UploadProductPage';
+import ProductPage from './components/views/ProductPage/ProductPage';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from './hoc/auth';
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)}/>
           <Route exact path="/register" component={Auth(RegisterPage, false)}/>
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
+          <Route exact path="/product/:productId" component={Auth(ProductPage, null)} />
         </Switch>
       </div>
     </Router>

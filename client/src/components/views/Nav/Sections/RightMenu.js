@@ -3,8 +3,11 @@ import React from 'react';
 import { Menu } from 'antd';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function RightMenu(props) {
+
+    const user = useSelector(state => state.user);
 
     const logoutHandler = () => {
         axios.get('/api/users/logout')

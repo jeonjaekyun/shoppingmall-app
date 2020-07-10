@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone';
 import { PlusOutlined } from '@ant-design/icons';
-import Axios from 'axios';
+import axios from 'axios';
+
 function FileUpload(props) {
 
     const [Images, setImages] = useState([])
@@ -14,7 +15,7 @@ function FileUpload(props) {
         }
         formData.append("file", files[0])
         //save the Image we chose inside the Node Server 
-        Axios.post('/api/product/uploadImage', formData, config)
+        axios.post('/api/product/uploadImage', formData, config)
             .then(response => {
                 if (response.data.success) {
 
@@ -28,12 +29,21 @@ function FileUpload(props) {
     }
 
     const onDelete = (image) => {
-        const currentIndex = Images.indexOf(image);
-        let newImages = [...Images];
-        newImages.splice(currentIndex, 1);
+        //{data:{image}} body로 보내는 방법
+        axios.delete('/api/product/uploadImage', {data:{image}})
+            .then(response => {
+                if (response.data.success) {
+                    const currentIndex = Images.indexOf(image);
+                    let newImages = [...Images];
+                    newImages.splice(currentIndex, 1);
 
-        setImages(newImages);
-        props.refreshFunction(newImages);
+                    console.log(image);
+                    setImages(newImages);
+                    props.refreshFunction(newImages);
+                } else {
+                    alert('업로드 이미지 삭제 실패!');
+                }
+            });
     }
 
     return (

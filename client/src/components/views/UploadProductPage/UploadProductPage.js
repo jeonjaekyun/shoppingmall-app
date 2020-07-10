@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 const { TextArea } = Input;
 
 const Category = [
-    { key: 1, value: "채소" },
+    { key: 1, value: "야채" },
     { key: 2, value: "과일" },
     { key: 3, value: "육류" },
     { key: 4, value: "가공식품" },
-    { key: 5, value: "냉장식품" }
+    { key: 5, value: "냉동식품" }
 ]
 
 function UploadProductPage(props) {
@@ -23,7 +23,6 @@ function UploadProductPage(props) {
     const [DescriptionValue, setDescriptionValue] = useState("");
     const [PriceValue, setPriceValue] = useState("");
     const [CategoryValue, setCategoryValue] = useState(1);
-
     const [Images, setImages] = useState([])
 
 
@@ -46,6 +45,7 @@ function UploadProductPage(props) {
     const updateImages = (newImages) => {
         setImages(newImages)
     }
+    
     const onSubmit = (event) => {
         event.preventDefault();
 
