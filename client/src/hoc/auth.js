@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../_actions/user_action';
 
 export default function(SpecificComponent,option,adminRoute=null) {
@@ -7,9 +7,11 @@ export default function(SpecificComponent,option,adminRoute=null) {
     //option
     // true = 로그인 시에만 입장/ false = 비 로그인 시에만 입장/ null 로그인 유무와 상관없이 입장
 
-    const dispatch = useDispatch();
-
     function AuthenticationCheck(props){
+        
+        let user = useSelector(state => state.user);
+        const dispatch = useDispatch();
+
         useEffect(() => {
             dispatch(auth())
                 .then(response => {
@@ -21,7 +23,7 @@ export default function(SpecificComponent,option,adminRoute=null) {
                         if(adminRoute && !response.payload.isAdmin){
                             props.history.push('/');
                         }else{
-                            if(!option){
+                            if(option===false){
                                 props.history.push('/');
                             }
                         }
@@ -30,7 +32,7 @@ export default function(SpecificComponent,option,adminRoute=null) {
         }, [props.history])
 
         return(
-            <SpecificComponent/>
+            <SpecificComponent {...props} user={user}/>
         )
     }
 

@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { User } = require("../models/User");
 const { auth } = require("../middlewares/auth");
-const {LocalStorage} = require('node-localstorage');
-const localStorage = new LocalStorage('./scratch');
 
 //=================================
 //             users
@@ -34,8 +32,7 @@ router.post('/login', (req, res) => {
                     if(err) return res.status(400).json(err);
                     res.cookie('x_auth',user.token)
                     .status(200)
-                    .json({loginSuccess:true, userid:user._id});
-                    localStorage.setItem('user_id',user._id);
+                    .json({loginSuccess:true, userId:user._id});
                 });
             }
         });

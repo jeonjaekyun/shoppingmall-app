@@ -22,6 +22,7 @@ function CategoryPage(props) {
 
                 }
             });
+
     }, [props.categoryNumber])
 
     return (
@@ -33,10 +34,10 @@ function CategoryPage(props) {
                                 <a href={`/product/${value._id}`}>
                                     <Card
                                         hoverable
-                                        style={{width:'100%', height:'320px'}}
+                                        style={{width:'100%', height:'350px'}}
                                         cover={<img alt={value.title} src={`http://localhost:5000/${value.images[0]}`} />}
                                     >
-                                        <Meta title={value.title}/>
+                                        <Meta title={value.title} description={"가격 : "+value.price}/>
                                     </Card>
                                 </a>
                             </div>

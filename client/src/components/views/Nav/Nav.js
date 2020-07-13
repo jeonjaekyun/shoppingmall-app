@@ -1,6 +1,5 @@
 import React from 'react';
 import {Input, Row, Col} from 'antd';
-import { withRouter } from 'react-router-dom';
 import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
 
@@ -30,4 +29,4 @@ function Nav() {
   )
 }
 
-export default withRouter(Nav)
+export default Nav

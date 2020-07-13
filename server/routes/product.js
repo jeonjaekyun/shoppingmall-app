@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Product } = require("../models/Product");
 const { auth } = require("../middlewares/auth");
+
 const multer = require('multer');
 const fs = require('fs');
 //=================================
@@ -55,9 +56,18 @@ router.post('/', function(req,res){
     
     const categoryNumber = req.body.categoryNumber;
 
-    Product.find({category:categoryNumber},{title:true, images:true},function(err,results){
+    Product.find({category:categoryNumber},{title:true, images:true, price:true},function(err,results){
         if(err) return res.json({success:false, err});
         return res.json({success:true, results});
+    })
+});
+
+router.get('/:productId', function(req, res){
+    let productId = req.params.productId;
+    
+    Product.findOne({_id:productId},{title:true, images:true, description:true, price:true},function(err,result){
+        if(err) return res.json({success:false, err});
+        return res.json({success:true, result});
     })
 });
 
