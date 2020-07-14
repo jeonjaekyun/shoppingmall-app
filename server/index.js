@@ -14,6 +14,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/product', require('./routes/product'));
 app.use('/api/cart', require('./routes/cart'));
+app.use('/api/comment', require('./routes/comment'));
 
 app.listen(port, ()=>{
     console.log(`port : ${port}`);

@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Cart } = require("../models/Cart");
 const { auth } = require("../middlewares/auth");
-
-const multer = require('multer');
-const fs = require('fs');
 //=================================
 //             cart
 //=================================

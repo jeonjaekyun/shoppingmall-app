@@ -2,29 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true)
 
-const CartSchema = mongoose.Schema({
+const CommentSchema = mongoose.Schema({
     userFrom:{
         type: Schema.Types.ObjectId,
         ref:'User'
+    },
+    userEmail:{
+        type:String,
     },
     productFrom:{
         type: Schema.Types.ObjectId,
         ref:'Product'
     },
-    title:{
+    content:{
         type:String,
-        maxlength:50
-    },
-    price:{
-        type:Number,
-        default:0
-    },
-    cnt:{
-        type:Number,
-        default:0
+        maxLength:100
     }
 },{timestamps:true});
 
-const Cart = mongoose.model('Cart', CartSchema);
+const Comment = mongoose.model('Comment', CommentSchema);
 
-module.exports = {Cart};
+module.exports = {Comment};

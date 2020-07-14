@@ -91,7 +91,7 @@ function ProductPage(props) {
                         <hr/>
                         <h2>상품평</h2>
                         <hr/>
-                        <Comment></Comment>
+                        <Comment productId={productId}></Comment>
                     </div>
                 </div>
             </div>

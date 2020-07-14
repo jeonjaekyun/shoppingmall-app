@@ -14,6 +14,7 @@ function RightMenu(props) {
             .then(response => {
                 if (response.data.success) {
                     props.history.push('/login');
+                    window.localStorage.removeItem('userId');
                 } else {
                     alert('로그아웃 실패!');
                 }
@@ -31,12 +32,23 @@ function RightMenu(props) {
                 </Menu.Item>
             </Menu>
         )
-    } else {
+    } else if (user.userData && user.userData.isAdmin) {
         return (
             <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
                 <Menu.Item>
                     <a href="/product/upload">Upload</a>
                 </Menu.Item>
+                <Menu.Item>
+                    <a href="/cart">Cart</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <span onClick={logoutHandler}>Logout</span>
+                </Menu.Item>
+            </Menu>
+        )
+    }else{
+        return (
+            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
                 <Menu.Item>
                     <a href="/cart">Cart</a>
                 </Menu.Item>
