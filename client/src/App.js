@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import Nav from './components/views/Nav/Nav';
+import Footer from './components/views/Footer/Footer';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/cart" component={Auth(CartPage, null)} />
         </Switch>
       </div>
+      <Footer/>
     </Router>
   );
 }

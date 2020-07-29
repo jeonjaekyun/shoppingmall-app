@@ -61,37 +61,40 @@ function RegisterPage(props) {
         <div style={{
             width:"100%", height:'70vh', display:'flex', justifyContent:'center', 
             alignItems:'center',flexDirection:'column'}}>
-            <h2>Register</h2>
+            <h1 >Register</h1>
             <br/>
             <form onSubmit={onSubmitHandler}>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Email :</Col>
-                    <Col span={16}><Input placeholder='Email' value={Email} onChange={onEmailHandler}/></Col>
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Email :</Col>
+                    <Col span={16}><Input placeholder='Email' value={Email} 
+                    size="large" onChange={onEmailHandler}/></Col>
                 </Row>
                 <br/>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Name :</Col>
-                    <Col span={16}><Input placeholder='Name' value={Name} onChange={onNameHandler}/></Col>
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Name :</Col>
+                    <Col span={16}><Input placeholder='Name' value={Name} 
+                    size="large" onChange={onNameHandler}/></Col>
                 </Row>
                 <br/>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Last Name :</Col>
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Last Name :</Col>
                     <Col span={16}><Input placeholder='Last Name' value={LastName} onChange={onLastNameHandler}/></Col>
                 </Row>
                 <br/>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Password :</Col>
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Password :</Col>
                     <Col span={16}><Input type='password' placeholder='Password' value={Password}
-                        onChange={onPasswordHandler}/></Col>
+                        size="large" onChange={onPasswordHandler}/></Col>
                 </Row>
                 <br/>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Confirm :</Col>
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Confirm :</Col>
                     <Col span={16}><Input type='password' placeholder='Confirm Password' value={Confirm}
-                        onChange={onConfirmHandler}/></Col>
+                        size="large" onChange={onConfirmHandler}/></Col>
                 </Row>
-                <br/>
-                <Button style={{marginLeft:'100px'}} htmlType="submit">Submit</Button>
+                <br/><br/>
+                <Button style={{marginLeft:'130px'}} htmlType="submit"
+                    type="primary">Submit</Button>
             </form>
         </div>
     )

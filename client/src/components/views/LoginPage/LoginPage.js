@@ -46,24 +46,25 @@ function LoginPage(props) {
             width:"100%", height:'70vh', display:'flex', justifyContent:'center', 
             alignItems:'center',flexDirection:'column'}}
         >
-            <h2>Login</h2>
+            <h1 style={{marginRight:'20px'}}>Login</h1>
             <br/>
             <form onSubmit={onSubmitHandler}>
                 {/* {functionRow('Email :', 'Passoword', <UserOutlined />, onEmailHandler)}
                 {functionRow('Password :', 'Password', <LockOutlined />, onPasswordHandler)} */}
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Email :</Col>
-                    <Col span={16}><Input type="email" placeholder="Email" 
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Email :</Col>
+                    <Col span={16}><Input type="email" placeholder="Email" size="large"
                         prefix={<UserOutlined />} onChange={onEmailHandler}/></Col>
                 </Row>
                 <br/>
-                <Row gutter={16} style={{ width: '300px' }}>
-                    <Col span={8}>Password :</Col>
-                    <Col span={16}><Input type="password" placeholder="Password" 
+                <Row gutter={16} style={{ width: '400px' }}>
+                    <Col span={8} style={{fontSize:'20px', marginTop:'5px'}}>Password :</Col>
+                    <Col span={16}><Input type="password" placeholder="Password" size="large"
                     prefix={<LockOutlined />} onChange={onPasswordHandler}/></Col>
                 </Row>
-                <br/>
-                <Button htmlType="submit" style={{marginLeft:'100px'}}>Login</Button>  
+                <br/><br/>
+                <Button htmlType="submit" style={{marginLeft:'140px'}} 
+                type="primary" size="large">Login</Button>  
             </form>
         </div>
     )

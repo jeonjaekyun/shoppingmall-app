@@ -23,7 +23,7 @@ function RightMenu(props) {
 
     if (user.userData && !user.userData.isAuth) {
         return (
-            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
+            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'24px'}}>
                 <Menu.Item>
                     <a href="/login">로그인</a>
                 </Menu.Item>
@@ -34,7 +34,7 @@ function RightMenu(props) {
         )
     } else if (user.userData && user.userData.isAdmin) {
         return (
-            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
+            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'24px'}}>
                 <Menu.Item>
                     <a href="/product/upload">Upload</a>
                 </Menu.Item>
@@ -48,7 +48,7 @@ function RightMenu(props) {
         )
     }else{
         return (
-            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'16px'}}>
+            <Menu mode='horizontal' style={{float:"right", borderBottom:'none', fontSize:'24px'}}>
                 <Menu.Item>
                     <a href="/cart">Cart</a>
                 </Menu.Item>

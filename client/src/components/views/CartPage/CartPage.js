@@ -26,7 +26,7 @@ function CartPage(props) {
         {
             title: '상품명',
             dataIndex: 'title',
-            render: text => <a>{text}</a>,
+            render: text => <a href="/">{text}</a>,
         },
         {
             title: '가격',
