@@ -5,7 +5,8 @@ Nodejs와 React를 통해 만든 Shoppingmall-App
 
 ## 개발 언어 및 IT Skill
 - JavaScript
-- nodejs, react, redux, express
+- react, redux, Ant Design
+- nodejs, express
 - MongoDB, Mongoose
 
 ## 구조도
